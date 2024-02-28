@@ -1,0 +1,10 @@
+Ce projet à été créé à partir du tutoriel d'inition à Angular de Simon Dieny dont voici la vidéo :
+
+https://www.youtube.com/watch?v=DTIYVffhJuU&ab_channel=SimonDieny-CodeSenior
+
+Je tiens à dire trois choses:
+1_ Ce tutoriel est excellent et bien expliqué. Je le recommande à tous les débutants sur Angular.
+2_ Néanmoins je recommande aussi de renommer les variables différemment de Simon qui appel beaucoup de ses
+variables simplement par "pokemon" ce qui rend parfois le code difficile pour s'y retrouver.
+3_ A ce jour (Fév 2024), il n'y a que la partie sur les Guard qui n'est plus d'actualité (suite à la màj 
+de la v16)

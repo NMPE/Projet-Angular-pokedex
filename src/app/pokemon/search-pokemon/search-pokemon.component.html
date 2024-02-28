@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+        <div class="card">
+            <div class="card-content">
+                <div class="input-field">
+                    <input 
+                        type="text"
+                        #searchBox 
+                        (keyup)="search(searchBox.value)" 
+                        placeholder="Rechercher un pokémon (2 charactères minimum)"
+                    >
+                </div>
+                <!--Je rajoute, par rapport au tutoriel, le [hidden] ci-dessous par soucis d'ergonomie-->
+                <div class="collection" [hidden]="!searchBox.value" >
+                    <a                         
+                        *ngFor="let pokemonX of pokemonsList$ | async"
+                        (click)="goToPokemonDetail(pokemonX)"
+                        class="collection-item"
+                    >
+                        {{ pokemonX.name  }}
+                    </a>
+                    <!--Je rajoute aussi ceci pour l'ergonomie-->  
+                    <div *ngIf="searchBox.value.length>0">
+                        <a  
+                            *ngIf="(pokemonsList$| async)?.length==0 "
+                            class="collection-item center"
+                        >
+                            Aucune correspondance trouvée.
+                        </a>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

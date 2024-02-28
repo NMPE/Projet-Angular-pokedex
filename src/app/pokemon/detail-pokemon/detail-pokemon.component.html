@@ -1,0 +1,50 @@
+<!-- Chapitre 6 : Les Routes --> 
+<div *ngIf="pokemonPris" class="row">
+  <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ pokemonPris.name }}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-image">
+        <img [src]="pokemonPris.picture">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Nom</td>
+                <td><strong>{{ pokemonPris.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>Points de vie</td>
+                <td><strong>{{ pokemonPris.hp }}</strong></td>
+              </tr>
+              <tr>
+                <td>Dégâts</td>
+                <td><strong>{{ pokemonPris.cp }}</strong></td>
+              </tr>
+              <tr>
+                <td>Types</td>
+                <td>
+                  <span *ngFor="let type of pokemonPris.types" class="{{ type | pokemonTypeColor }}">{{ type }}</span>
+                </td>
+              </tr>
+              <tr> 
+                <td>Date de création</td>
+                <td><em>{{ pokemonPris.created | date:"dd/MM/yyyy" }}</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goToPokemonList()" style="cursor: pointer;">Retour</a>
+          <a (click)="goToEditPokemon(pokemonPris)" style="cursor: pointer;">Editer</a>
+          <a (click)="deletePokemon(pokemonPris)" style="cursor: pointer;">Supprimer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4 *ngIf='!pokemonPris' class="center">
+  <app-page-loader></app-page-loader>
+</h4>

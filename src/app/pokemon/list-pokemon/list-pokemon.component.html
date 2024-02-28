@@ -1,0 +1,52 @@
+<style>
+    .card-image{
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<div class="container">    
+    <div class="row">
+        <app-search-pokemon></app-search-pokemon>
+
+        <div 
+            class=" col m4 s6" 
+            *ngFor="let elementPokemonList of pokemonsList" 
+            (click)="goToPokemonDetail(elementPokemonList)"
+        >              
+            <div 
+                class="card horizontal z-depth-2" 
+                (click)="selectPokemon(elementPokemonList.id)" 
+                [pkmnBorderCard]=elementPokemonList.id
+                style="cursor: pointer;"
+            >
+                <div class="card-image">
+                    <img 
+                        class="monImage"
+                        [src]="elementPokemonList.picture" 
+                    >         
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p >{{elementPokemonList.name}}</p>
+                        <p><small> {{elementPokemonList.created | date:"dd/mm/yyyy"}}</small></p>   
+                        <span 
+                            *ngFor="let pkmnType of elementPokemonList.types"
+                            class="{{pkmnType | pokemonTypeColor}}"
+                        >
+                            {{pkmnType}}
+                        </span>
+                    </div>
+                </div>
+            </div>       
+        </div>           
+    </div>
+</div>
+
+<a 
+    class="btn-floating btn-large waves-effect waves-light red z-depth-3"
+    style="position:fixed; bottom:25px; right:25px"
+    routerLink="/pokemon/add"
+>
+    +
+</a>
